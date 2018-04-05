@@ -1,33 +1,24 @@
 package dao.mysql.coffee;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import dao.PersistException;
+import dao.datasource.DataSource;
+import domain.coffee.CoffeeOrder;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-class MySqlCoffeeOrderDaoTest {
-    @BeforeEach
-    void setUp() {
-        MySqlCoffeeOrderDao(new Connection())
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
+class MySqlCoffeeOrderDaoTest{
 
     @Test
-    void parseResultSet() {
-    }
+    public void testCRUD(){
+        MySqlCoffeeOrderDao mySqlCoffeeOrderDao = new MySqlCoffeeOrderDao(DataSource.getInstance().getConnection());
 
-    @Test
-    void prepareStatementForInsert() {
-    }
+        CoffeeOrder order = new CoffeeOrder();
 
-    @Test
-    void prepareStatementForUpdate() {
-    }
+        try {
+            Assert.assertEquals(order, mySqlCoffeeOrderDao.persist(order));
+        } catch (PersistException e) {
+            e.printStackTrace();
+        }
 
+    }
 }

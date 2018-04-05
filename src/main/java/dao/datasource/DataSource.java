@@ -2,6 +2,8 @@ package dao.datasource;
 
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import utils.DBProperties;
 
 import java.beans.PropertyVetoException;
@@ -13,7 +15,7 @@ import java.util.Properties;
 
 public class DataSource {
     private final static Logger LOGGER =
-            Logger.getLogger(String.valueOf(DataSource.class));
+            LogManager.getLogger(DataSource.class);
 
     private static DataSource dataSource;
     private ComboPooledDataSource comboPooledDataSource;
