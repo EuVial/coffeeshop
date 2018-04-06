@@ -26,31 +26,34 @@ public class MySqlCoffeeOrderDao extends AbstractJDBCDao<Integer, CoffeeOrder> {
 
     @Override
     public String getSelectQuery() {
-        return "SELECT id, order_date, name, delivery_address, cost "
-                + "FROM coffee.CoffeeOrder";
+        return "SELECT id, order_date, name, delivery_address, cost\n"
+                + "FROM coffeeshop.CoffeeOrder;";
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO coffee.CoffeeOrder (order_date, name, delivery_address, cost "
+        return "INSERT INTO coffeeshop.CoffeeOrder (order_date, name, delivery_address, cost)\n"
                 + "VALUES (?, ?, ?, ?);";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE coffee.CoffeeOrder\n"
-                + "SET order_date = ?, name = ?, delivery_address = ?, cost = ?, "
-                + "WHERE id = ?";
+        return "UPDATE coffeeshop.CoffeeOrder\n"
+                + "SET order_date = ?, name = ?, delivery_address = ?, cost = ?\n"
+                + "WHERE id = ?;";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM coffee.CoffeeOrder WHERE id = ?";
+        return "DELETE FROM coffeeshop.CoffeeOrder\n" +
+                "WHERE id = ?;";
     }
 
     @Override
     public String getInitiatesQuery() {
-        return "SELECT COUNT(*) AS 'count' FROM coffee.CoffeeOrderItem WHERE order_id = ? LIMIT 1;";
+        return "SELECT COUNT(*) AS 'count'\n" +
+                "FROM coffeeshop.CoffeeOrderItem\n" +
+                "WHERE order_id = ? LIMIT 1;";
     }
 
     @Override
