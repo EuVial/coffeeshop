@@ -1,4 +1,4 @@
-USE `coffeeshop`;
+USE `CoffeeShop`;
 
 --
 -- Dumping data for table `Configuration`

@@ -1,4 +1,4 @@
-USE `coffeeshop`;
+USE `CoffeeShop`;
 
 --
 -- Table structure for table `CoffeeOrder`

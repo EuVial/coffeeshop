@@ -1,1 +1,1 @@
-DROP DATABASE IF EXISTS `coffeeshop`;
+DROP DATABASE IF EXISTS `CoffeeShop`;
