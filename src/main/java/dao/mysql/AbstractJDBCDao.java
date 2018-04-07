@@ -7,6 +7,7 @@ import dao.PersistException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -78,7 +79,7 @@ public abstract class AbstractJDBCDao<PK extends Integer,
     public T read(final Integer key) throws PersistException {
         List<T> list;
         String sql = getSelectQuery();
-        sql += " WHERE id = ?";
+        sql += " WHERE id = ?;";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, key);
             ResultSet rs = statement.executeQuery();
@@ -109,32 +110,25 @@ public abstract class AbstractJDBCDao<PK extends Integer,
     }
 
     @Override
-    public T persist(final T object) throws PersistException {
-        T persistInstance;
+    public PK create(final T object) throws PersistException {
+        Integer id = null;
+        ResultSet resultSet;
         // Add record
         String sql = getCreateQuery();
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             prepareStatementForInsert(statement, object);
             int count = statement.executeUpdate();
             if (count != 1) {
                 throw new PersistException("On persist modify more then 1 record: " + count);
             }
-        } catch (Exception e) {
-            throw new PersistException(e);
-        }
-        // Get the newly inserted record
-        sql = getSelectQuery() + " WHERE id = last_insert_id();";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            ResultSet rs = statement.executeQuery();
-            List<T> list = parseResultSet(rs);
-            if ((list == null) || (list.size() != 1)) {
-                throw new PersistException("Exception on findByPK new persist data.");
+            resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                id = resultSet.getInt(1);
             }
-            persistInstance = list.iterator().next();
         } catch (Exception e) {
             throw new PersistException(e);
         }
-        return persistInstance;
+        return (PK) id;
     }
 
     @Override
@@ -164,7 +158,6 @@ public abstract class AbstractJDBCDao<PK extends Integer,
             if (count != 1) {
                 throw new PersistException("On delete modify more then 1 record: " + count);
             }
-            statement.close();
         } catch (Exception e) {
             throw new PersistException(e);
         }

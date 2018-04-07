@@ -10,7 +10,7 @@ import java.util.Date;
 class MySqlCoffeeOrderDaoTest{
 
     @Test
-    public void testCRUD(){
+    public void testCreate(){
         MySqlCoffeeOrderDao mySqlCoffeeOrderDao =
                 new MySqlCoffeeOrderDao(DataSource.getInstance().getConnection());
 
@@ -19,12 +19,17 @@ class MySqlCoffeeOrderDaoTest{
         order.setDeliveryAddress("Vitebsk, Chkalovo Str.");
         order.setName("Simple order");
         order.setOrderDate(new Date());
-
+        CoffeeOrder persistedOrder = null;
         try {
-            CoffeeOrder persistedOrder = mySqlCoffeeOrderDao.persist(order);
-            System.out.println(persistedOrder.getName());
+//            persistedOrder = mySqlCoffeeOrderDao.persist(order);
+            System.out.println(mySqlCoffeeOrderDao.create(order));
         } catch (PersistException e) {
             e.printStackTrace();
         }
+//        Assert.assertNotNull(persistedOrder);
+//        Assert.assertEquals(order.getName(), persistedOrder.getName());
+//        Assert.assertEquals(order.getDeliveryAddress(), persistedOrder.getDeliveryAddress());
+//        Assert.assertEquals(order.getCost(), persistedOrder.getCost());
+//        Assert.assertNotNull(persistedOrder.getOrderDate());
     }
 }

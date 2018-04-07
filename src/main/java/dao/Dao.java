@@ -14,7 +14,8 @@ public interface Dao<PK extends Serializable, T extends Identified<PK>> {
     T read(PK key) throws PersistException;
 
     /** Creates a new record that corresponds to the object */
-    T persist(T object) throws PersistException;
+    PK create(T object) throws PersistException;
+//    T persist(T object) throws PersistException;
 
     /** Saves the state of the object in the database */
     void update(T object) throws PersistException;
