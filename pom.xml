@@ -29,6 +29,8 @@
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
         <maven.war.plugin.version>3.2.0</maven.war.plugin.version>
         <native2ascii.maven.plugin.version>2.0.1</native2ascii.maven.plugin.version>
+        <dbunit.version>2.5.4</dbunit.version>
+        <h2.version>1.4.197</h2.version>
         <!--<native2ascii.maven.plugin.version>1.0-beta-1</native2ascii.maven.plugin.version>-->
     </properties>
 
@@ -121,6 +123,30 @@
             <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.dbunit/dbunit -->
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${dbunit.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- in memory DB -->
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
