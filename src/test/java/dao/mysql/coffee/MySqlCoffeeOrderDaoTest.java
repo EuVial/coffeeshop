@@ -13,7 +13,6 @@ class MySqlCoffeeOrderDaoTest{
     public void testCreate(){
         MySqlCoffeeOrderDao mySqlCoffeeOrderDao =
                 new MySqlCoffeeOrderDao(DataSource.getInstance().getConnection());
-
         CoffeeOrder order = new CoffeeOrder();
         order.setCost(10.0);
         order.setDeliveryAddress("Vitebsk, Chkalovo Str.");
