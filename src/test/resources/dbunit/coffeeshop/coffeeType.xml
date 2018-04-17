@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-    <COFFEETYPE id='1' type_name='Arabic' price='2.0' disabled="Y"/>
-
-    <COFFEETYPE id='2' type_name='Robust' price='1.0' disabled="N"/>
-
-    <COFFEETYPE id='3' type_name='Arabic' price='2.0' disabled="N"/>
-</dataset>

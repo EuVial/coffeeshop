@@ -1,4 +1,4 @@
-package dao.mysql.coffee;
+package dao.mysql.coffee.dbUnit;
 
 import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
@@ -25,7 +25,7 @@ public class DbUnit extends DBTestCase {
     }
 
     protected IDataSet getDataSet() throws Exception {
-        return new FlatXmlDataSetBuilder().build(new FileInputStream("src/test/resources/dbunit/coffeeshop/coffeeType.xml"));
+        return new FlatXmlDataSetBuilder().build(new FileInputStream("src/test/resources/dbUnit/coffeeShop/coffeeShop.xml"));
     }
 
     protected DatabaseOperation getSetUpOperation() throws Exception {
@@ -38,7 +38,7 @@ public class DbUnit extends DBTestCase {
 
     @Test
     public void testById() {
-        int id = 1;// get user id from database
+        int id = 1;// get coffeeOrder id from database
         Assert.assertEquals(1, id);
     }
 }

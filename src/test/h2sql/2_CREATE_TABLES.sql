@@ -6,13 +6,13 @@ USE `CoffeeShop`;
 
 DROP TABLE IF EXISTS `CoffeeOrder`;
 CREATE TABLE `CoffeeOrder` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `name` varchar(80) DEFAULT NULL,
   `delivery_address` varchar(100) NOT NULL,
   `cost` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `CoffeeType`
@@ -38,10 +38,8 @@ CREATE TABLE `CoffeeOrderItem` (
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `CoffeeOrderItem_idx_CoffeeType` (`type_id`),
-  KEY `CoffeeOrderItem_idx_CoffeeOrder` (`order_id`),
-  CONSTRAINT `CoffeeOrder_id_fkey` FOREIGN KEY (`order_id`) REFERENCES `CoffeeOrder` (`id`),
-  CONSTRAINT `CoffeeType_id_fkey` FOREIGN KEY (`type_id`) REFERENCES `CoffeeType` (`id`)
+  foreign key (order_id) references CoffeeOrder(ID),
+  foreign key (type_id) references CoffeeType(ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

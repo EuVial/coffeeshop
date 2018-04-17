@@ -28,7 +28,7 @@ class DBPropertiesTest {
     void readPropertyTest() {
         assertNotNull(PROPERTIES.getProperty("db.driver"));
         assertEquals(PROPERTIES.getProperty("db.driver"), "com.mysql.cj.jdbc.Driver");
-        assertEquals(PROPERTIES.getProperty("db.url"), "jdbc:mysql:///coffeeshop?autoReconnect=true" +
+        assertEquals(PROPERTIES.getProperty("db.url"), "jdbc:mysql:///coffeeShop?autoReconnect=true" +
                 "&useSSL=false&useUnicode=true" +
                 "&useJDBCCompliantTimezoneShift=true" +
                 "&useLegacyDatetimeCode=false" +
