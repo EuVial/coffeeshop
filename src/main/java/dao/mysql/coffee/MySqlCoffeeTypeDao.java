@@ -30,7 +30,7 @@ public class MySqlCoffeeTypeDao extends AbstractJDBCDao<Integer, CoffeeType> {
     @Override
     public String getSelectQuery() {
         return "SELECT id, type_name, price, disabled\n"
-                + "FROM coffeeshop.CoffeeType";
+                + "FROM coffeeShop.CoffeeType";
     }
 
     @Override
