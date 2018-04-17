@@ -31,6 +31,8 @@
         <native2ascii.maven.plugin.version>2.0.1</native2ascii.maven.plugin.version>
         <dbunit.version>2.5.4</dbunit.version>
         <h2.version>1.4.197</h2.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
         <!--<native2ascii.maven.plugin.version>1.0-beta-1</native2ascii.maven.plugin.version>-->
     </properties>
 
@@ -76,6 +78,29 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+        <!--TODO: test if it needed for dbunit-->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons-collections.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.glassfish.web/javax.servlet.jsp.jstl -->
