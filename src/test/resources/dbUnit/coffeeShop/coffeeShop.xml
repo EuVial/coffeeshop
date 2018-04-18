@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <coffeetype id="1" type_name="Arabic" price="2.0" disabled="Y"/>
+    <CoffeeType id="1" type_name="Arabic" price="2.0" disabled="Y"/>
 
-    <coffeetype id="2" type_name="Robust" price="1.0" disabled="N"/>
+    <CoffeeType id="2" type_name="Robust" price="1.0" disabled="N"/>
 
-    <coffeetype id="3" type_name="Arabic" price="2.0" disabled="N"/>
+    <CoffeeType id="3" type_name="Arabic" price="2.0" disabled="N"/>
 
-    <coffeeorder id="1" order_date="12.01.2018" name="Ivanov" delivery_address="Minsk" cost="4.0" />
+    <CoffeeOrder id="1" order_date="12.01.2018" name="Ivanov" delivery_address="Minsk" cost="4.0"/>
 
-    <coffeeorder id="2" order_date="17.01.2018" name="Petrov" delivery_address="Vitebsk" cost="6.0" />
+    <CoffeeOrder id="2" order_date="17.01.2018" name="Petrov" delivery_address="Vitebsk" cost="6.0"/>
 
-    <coffeeorder id="3" order_date="17.01.2018" name="Pavel" delivery_address="Brest" cost="4.0" />
+    <CoffeeOrder id="3" order_date="17.01.2018" name="Pavel" delivery_address="Brest" cost="4.0"/>
 </dataset>

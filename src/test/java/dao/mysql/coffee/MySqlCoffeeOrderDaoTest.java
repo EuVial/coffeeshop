@@ -9,6 +9,11 @@ import java.util.Date;
 
 class MySqlCoffeeOrderDaoTest{
 
+    private static final String JDBC_DRIVER = org.h2.Driver.class.getName();
+    private static final String JDBC_URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
+    private static final String USER = "root";
+    private static final String PASSWORD = "pass";
+
     @Test
     public void testCreate(){
         MySqlCoffeeOrderDao mySqlCoffeeOrderDao =
