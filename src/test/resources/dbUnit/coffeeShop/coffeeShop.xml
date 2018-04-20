@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <CoffeeType id="1" type_name="Arabic" price="2.0" disabled="Y"/>
+    <COFFEEORDER ID="1" ORDER_DATE="2018-01-12 00:00:00.0" NAME="Ivanov" DELIVERY_ADDRESS="Minsk" COST="4.0" />
+    <COFFEEORDER ID="2" ORDER_DATE="2018-01-17 00:00:00.0" NAME="Petrov" DELIVERY_ADDRESS="Vitebsk" COST="6.0" />
+    <COFFEEORDER ID="3" ORDER_DATE="2018-01-17 00:00:00.0" NAME="Pavel" DELIVERY_ADDRESS="Brest" COST="4.0" />
 
-    <CoffeeType id="2" type_name="Robust" price="1.0" disabled="N"/>
+    <COFFEETYPE ID="1" TYPE_NAME="Arabic" PRICE="2.0" DISABLED="Y" />
+    <COFFEETYPE ID="2" TYPE_NAME="Robust" PRICE="1.0" DISABLED="N" />
+    <COFFEETYPE ID="3" TYPE_NAME="Arabic" PRICE="2.0" DISABLED="N" />
 
-    <CoffeeType id="3" type_name="Arabic" price="2.0" disabled="N"/>
-
-    <CoffeeOrder id="1" order_date="12.01.2018" name="Ivanov" delivery_address="Minsk" cost="4.0"/>
-
-    <CoffeeOrder id="2" order_date="17.01.2018" name="Petrov" delivery_address="Vitebsk" cost="6.0"/>
-
-    <CoffeeOrder id="3" order_date="17.01.2018" name="Pavel" delivery_address="Brest" cost="4.0"/>
+    <CONFIGURATION ID="x" VALUE="10" />
+    <CONFIGURATION ID="n" VALUE="5" />
+    <CONFIGURATION ID="m" VALUE="2" />
 </dataset>

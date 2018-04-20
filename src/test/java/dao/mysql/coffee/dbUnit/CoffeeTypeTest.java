@@ -1,21 +1,19 @@
 package dao.mysql.coffee.dbUnit;
 
+import dao.mysql.coffee.MySqlCoffeeTypeDao;
 import domain.coffee.CoffeeType;
-import org.dbunit.Assertion;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import service.coffee.CoffeeTypeService;
 import service.logic.CoffeeTypeServiceImpl;
 
 import java.io.File;
 import java.util.List;
 
 public class CoffeeTypeTest extends DBUnitConfig {
-
-    private CoffeeTypeService service = new CoffeeTypeServiceImpl();
+    private CoffeeTypeServiceImpl service = new CoffeeTypeServiceImpl();
 //    private PersonService service = new PersonService();
 //    private EntityManager em = Persistence.createEntityManagerFactory("DBUnitEx").createEntityManager();
 
@@ -36,15 +34,20 @@ public class CoffeeTypeTest extends DBUnitConfig {
 
     @Test
     public void testGetAll() throws Exception {
+        MySqlCoffeeTypeDao coffeeTypeDao = new MySqlCoffeeTypeDao(connection);
+        service.setCoffeeTypeDao(coffeeTypeDao);
         List<CoffeeType> coffeeTypeList = service.findAll();
-
 //        IDataSet expectedData = new FlatXmlDataSetBuilder().build(
 //                Thread.currentThread().getContextClassLoader()
 //                        .getResourceAsStream("src/test/resources/dbUnit/coffeeShop/coffeeShop.xml"));
         IDataSet expectedData = new FlatXmlDataSetBuilder()
                 .build(new File("src/test/resources/dbUnit/coffeeShop/coffeeShop.xml"));
         IDataSet actualData = tester.getConnection().createDataSet();
-        Assertion.assertEquals(expectedData, actualData);
+        System.out.println("expected:");
+        System.out.println(expectedData.getTable("coffeeType"));
+        System.out.println("actual:");
+        System.out.println(actualData.getTable("coffeeType"));
+//        Assertion.assertEquals(expectedData, actualData);
         Assert.assertEquals(expectedData.getTable("coffeeType").getRowCount(), coffeeTypeList.size());
     }
 

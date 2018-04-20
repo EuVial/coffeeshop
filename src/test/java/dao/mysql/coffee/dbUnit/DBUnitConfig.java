@@ -9,17 +9,24 @@ import org.dbunit.operation.DatabaseOperation;
 import org.junit.Before;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Properties;
 
 public class DBUnitConfig extends DBTestCase {
     protected IDatabaseTester tester;
     private Properties prop;
     protected IDataSet beforeData;
+    protected Connection connection;
 
     @Before
     public void setUp() throws Exception {
         tester = new JdbcDatabaseTester(prop.getProperty("db.driver"),
                 prop.getProperty("db.url"),
+                prop.getProperty("db.username"),
+                prop.getProperty("db.password"),
+                prop.getProperty("db.schema"));
+        connection = DriverManager.getConnection(prop.getProperty("db.url"),
                 prop.getProperty("db.username"),
                 prop.getProperty("db.password"));
     }
@@ -37,7 +44,7 @@ public class DBUnitConfig extends DBTestCase {
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, prop.getProperty("db.url"));
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, prop.getProperty("db.username"));
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, prop.getProperty("db.password"));
-        System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_SCHEMA, "");
+        System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_SCHEMA, prop.getProperty("db.schema"));
     }
 
     @Override
