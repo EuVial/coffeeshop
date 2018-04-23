@@ -4,8 +4,8 @@ USE `CoffeeShop`;
 -- Table structure for table `CoffeeOrder`
 --
 
-DROP TABLE IF EXISTS `CoffeeOrder`;
-CREATE TABLE `CoffeeOrder` (
+DROP TABLE IF EXISTS CoffeeOrder;
+CREATE TABLE CoffeeOrder (
   `id` int NOT NULL AUTO_INCREMENT,
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `name` varchar(80) DEFAULT NULL,

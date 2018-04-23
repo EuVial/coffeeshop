@@ -7,6 +7,7 @@ import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.Before;
+import utils.ScriptReader;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -29,6 +30,7 @@ public class DBUnitConfig extends DBTestCase {
         connection = DriverManager.getConnection(prop.getProperty("db.url"),
                 prop.getProperty("db.username"),
                 prop.getProperty("db.password"));
+        ScriptReader.execute("src/test/h2sql/dump/COFFEE_TYPE.sql", connection);
     }
 
     public DBUnitConfig(String name) {

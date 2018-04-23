@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import service.logic.CoffeeTypeServiceImpl;
-import utils.ScriptReader;
 
 import java.io.File;
 import java.util.List;
@@ -20,7 +19,7 @@ public class CoffeeTypeTest extends DBUnitConfig {
     public void setUp() throws Exception {
         super.setUp();
         beforeData = new FlatXmlDataSetBuilder().build(
-                new File("src/test/resources/dbUnit/coffeeShop/coffeeShop.xml"));
+                new File("src/test/resources/dbUnit/coffeeShop/coffeeType.xml"));
         tester.setDataSet(beforeData);
         tester.onSetup();
     }
@@ -31,12 +30,12 @@ public class CoffeeTypeTest extends DBUnitConfig {
 
     @Test
     public void testGetAll() throws Exception {
-        ScriptReader.execute("src/test/h2sql/3_DUMPING_DATA.sql", connection);
+//        ScriptReader.execute("src/test/h2sql/dump/COFFEE_TYPE.sql", connection);
         MySqlCoffeeTypeDao coffeeTypeDao = new MySqlCoffeeTypeDao(connection);
         service.setCoffeeTypeDao(coffeeTypeDao);
         List<CoffeeType> coffeeTypeList = service.findAll();
         IDataSet expectedData = new FlatXmlDataSetBuilder()
-                .build(new File("src/test/resources/dbUnit/coffeeShop/coffeeShop.xml"));
+                .build(new File("src/test/resources/dbUnit/coffeeShop/coffeeType.xml"));
         IDataSet actualData = tester.getConnection().createDataSet();
         System.out.println("expected:");
         System.out.println(expectedData.getTable("coffeeType"));

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <COFFEETYPE ID="1" TYPE_NAME="Arabic" PRICE="2.0" DISABLED="Y" />
+    <COFFEETYPE ID="2" TYPE_NAME="Robust" PRICE="1.0" DISABLED="N" />
+    <COFFEETYPE ID="3" TYPE_NAME="Arabic" PRICE="2.0" DISABLED="N" />
+</dataset>
